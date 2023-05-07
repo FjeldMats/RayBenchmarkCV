@@ -1,7 +1,7 @@
 import ray
 from ray.cluster_utils import Cluster
 from ray.util.queue import Queue
-import time, random, sys, warnings, logging
+import time, warnings, logging
 from datetime import datetime
 
 def start_cluster(num_cpus):
@@ -126,7 +126,7 @@ hyperparams = [5]
 
 methods = ["rayNestedCVSelection (Grid search)", "rayNestedCVSelection (Bayesian optimization)"]
 
-with open(f"cpu-{len(cpus)} splits-{len(splits)} params-{len(hyperparams)}-{datetime.now()}.csv", 'w') as f:
+with open(f"results/cpu-{len(cpus)} splits-{len(splits)} params-{len(hyperparams)}-{datetime.now()}.csv", 'w') as f:
     f.write(f"method, cpu, split_outer, split_inner, param, time\n")
     for param in hyperparams:
         for cpu in cpus:
